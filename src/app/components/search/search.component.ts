@@ -12,14 +12,22 @@ import { SpotifyService } from "../../services/spotify.service";
 export class SearchComponent  {
 
   public searchStr: string = null;
+  public searchRes: Result[] = null;
 
   constructor(private _spotifyService:SpotifyService) {}
 
   searchMusic() {
     this._spotifyService.searchMusic(this.searchStr)
       .subscribe(res => {
-        console.log(res);
+        this.searchRes = res.items;
       })
   }
 
+}
+
+// Result class
+class Result {
+  private id: number;
+  private name: string;
+  private genre: any;
 }

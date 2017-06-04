@@ -15,11 +15,13 @@ var SearchComponent = (function () {
     function SearchComponent(_spotifyService) {
         this._spotifyService = _spotifyService;
         this.searchStr = null;
+        this.searchRes = null;
     }
     SearchComponent.prototype.searchMusic = function () {
+        var _this = this;
         this._spotifyService.searchMusic(this.searchStr)
             .subscribe(function (res) {
-            console.log(res);
+            _this.searchRes = res.items;
         });
     };
     return SearchComponent;
@@ -33,4 +35,10 @@ SearchComponent = __decorate([
     __metadata("design:paramtypes", [spotify_service_1.SpotifyService])
 ], SearchComponent);
 exports.SearchComponent = SearchComponent;
+// Result class
+var Result = (function () {
+    function Result() {
+    }
+    return Result;
+}());
 //# sourceMappingURL=search.component.js.map
